@@ -4,28 +4,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075E54">
 <title>Business Request Form</title>
 
 <style>
-*{box-sizing:border-box}
-
+* {
+  box-sizing: border-box;
+}
 
 :root {
-  --primary: #10796F;
+  --primary: #075E54;
   --background: #EDF3F0;
   --text: #1B2D2A;
   --accent: #C7A96B;
   --radius: 18px;
+  --form-background: #FFFFFF;
 }
 
-body{
-  margin:0;
-  padding:14px;
-  font-family:Arial,sans-serif;
-  background:var(--background);
-  color:var(--text);
+body {
+  margin: 0;
+  padding: 14px;
+  font-family: Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
 }
-
 
 .page {
   width: 100%;
@@ -34,112 +36,130 @@ body{
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.03fr 1fr;
-  background: var(--form-background, #FFFFFF);
-  border-radius: var(--radius, 18px);
+  background: var(--form-background);
+  border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid #E0E9E4;
   box-shadow: 0 18px 45px #173B3214;
 }
 
-.intro{
-  background:var(--primary);
-  color:#fff;
-  padding:42px 40px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+.intro {
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 42px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:28px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 28px;
 }
 
-.logo{
-  width:54px;
-  height:54px;
-  background:#fff;
-  color:var(--primary);
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  font-weight:800;
-  font-size:19px;
+.logo {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  color: var(--primary);
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 19px;
 }
 
-.brand-name{font-size:16px;font-weight:700}
-.tagline{font-size:13px;margin-top:6px}
-
-.intro h1{
-  font-size:38px;
-  line-height:1.12;
-  margin:0 0 18px;
+.brand-name {
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.description{
-  font-size:14px;
-  line-height:1.65;
-  margin:0 0 22px;
+.tagline {
+  font-size: 13px;
+  margin-top: 6px;
 }
 
-.benefit{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:14px;
-  margin:0 0 13px;
-  line-height:1.4;
+.intro h1 {
+  font-size: 38px;
+  line-height: 1.12;
+  margin: 0 0 18px;
 }
 
-.check{font-size:18px;font-weight:bold}
-
-.callout{
-  margin-top:18px;
-  padding:14px 16px;
-  border-radius:11px;
-  background:#ffffff20;
-  font-size:13px;
-  line-height:1.5;
+.description {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 0 22px;
 }
 
+.benefit {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  margin: 0 0 13px;
+  line-height: 1.4;
+}
+
+.check {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.callout {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 11px;
+  background: #FFFFFF20;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 .form-panel {
-  background: var(--form-background, #FFFFFF);
+  background: var(--form-background);
   padding: 40px;
+  min-width: 0;
 }
 
-.form-panel h2{
-  margin:0 0 7px;
-  font-size:27px;
-  color:#111;
+.form-panel h2 {
+  margin: 0 0 7px;
+  font-size: 27px;
+  color: #111111;
 }
 
-.subtitle{
-  margin:0 0 24px;
-  font-size:12px;
-  color:#617083;
+.subtitle {
+  margin: 0 0 24px;
+  font-size: 12px;
+  color: #617083;
+  line-height: 1.5;
 }
 
-#fields{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  column-gap:12px;
-  row-gap:0;
+#fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 0;
 }
 
-.field{margin-bottom:15px;min-width:0}
-.field.full{grid-column:1/-1}
-
-label{
-  display:block;
-  font-size:12px;
-  font-weight:600;
-  margin-bottom:6px;
-  color:#17212c;
+.field {
+  margin-bottom: 15px;
+  min-width: 0;
 }
 
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #17212C;
+}
 
 input,
 select,
@@ -147,7 +167,7 @@ textarea {
   display: block;
   width: 100%;
   min-width: 0;
-  padding: 12px 14px;
+  padding: 11px 12px;
   border: 1px solid #DCE6E1;
   border-radius: 12px;
   background: #F8FBF9;
@@ -159,6 +179,16 @@ textarea {
               background 0.2s ease;
 }
 
+input,
+select {
+  height: 40px;
+}
+
+textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -168,39 +198,76 @@ textarea:focus {
   box-shadow: 0 0 0 3px #10796F20;
 }
 
-input,select{height:40px}
-textarea{height:72px;resize:vertical}
-
-input:focus,select:focus,textarea:focus{
-  outline:2px solid var(--primary);
-  outline-offset:1px;
+button {
+  width: 100%;
+  min-height: 42px;
+  padding: 13px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease,
+              transform 0.2s ease;
 }
 
-button{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:10px;
-  background:var(--primary);
-  color:white;
-  font-size:13px;
-  font-weight:bold;
-  cursor:pointer;
+button:hover:not(:disabled) {
+  opacity: 0.92;
 }
 
-#message{font-size:12px;line-height:1.5}
-
-@media(max-width:720px){
-  body{padding:10px}
-  .page{grid-template-columns:1fr}
-  .intro{padding:30px 25px}
-  .intro h1{font-size:32px}
-  .form-panel{padding:28px 22px}
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 
-@media(max-width:380px){
-  #fields{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
+#message {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 12px 0 0;
+  overflow-wrap: anywhere;
+}
+
+#message:empty {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 10px;
+  }
+
+  .page {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .intro {
+    padding: 30px 25px;
+  }
+
+  .intro h1 {
+    font-size: 32px;
+  }
+
+  .form-panel {
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  #fields {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .intro h1 {
+    font-size: 29px;
+  }
 }
 </style>
 </head>
@@ -225,12 +292,14 @@ button{
 
   <section class="form-panel">
     <h2 id="formTitle"></h2>
-    <p class="subtitle">Tell us what you need and we'll get back to you.</p>
+    <p class="subtitle">
+      Tell us what you need and we'll get back to you.
+    </p>
 
     <form id="businessForm">
       <div id="fields"></div>
       <button type="submit" id="submitButton"></button>
-      <p id="message" role="status"></p>
+      <p id="message" role="status" aria-live="polite"></p>
     </form>
   </section>
 
@@ -239,140 +308,219 @@ button{
 <script src="config.js"></script>
 
 <script>
-const c = businessConfig;
+"use strict";
 
-document.title = c.businessName + " | Request Form";
+(() => {
+  const c = window.businessConfig;
 
-
-const root = document.documentElement;
-
-root.style.setProperty(
-  "--form-background",
-  c.branding.formBackground || "#FFFFFF"
-);
-
-
-root.style.setProperty(
-  "--primary",
-  c.branding.primaryColor || "#10796F"
-);
-
-root.style.setProperty(
-  "--background",
-  c.branding.backgroundColor || "#EDF3F0"
-);
-
-root.style.setProperty(
-  "--text",
-  c.branding.textColor || "#1B2D2A"
-);
-
-root.style.setProperty(
-  "--accent",
-  c.branding.accentColor || "#C7A96B"
-);
-
-root.style.setProperty(
-  "--radius",
-  c.branding.borderRadius || "18px"
-);
-
-document.getElementById("businessName").textContent = c.businessName;
-document.getElementById("tagline").textContent = c.tagline;
-document.getElementById("heading").textContent = c.content.heading;
-document.getElementById("description").textContent = c.content.description;
-document.getElementById("formTitle").textContent = c.form.title;
-document.getElementById("callout").textContent = c.content.calloutText;
-document.getElementById("submitButton").textContent = c.content.buttonText;
-
-const initials = c.businessName
-  .trim()
-  .split(/\s+/)
-  .slice(0, 2)
-  .map(word => word[0])
-  .join("")
-  .toUpperCase();
-
-document.getElementById("logo").textContent = initials;
-
-c.content.benefits.forEach(text => {
-  const item = document.createElement("div");
-  item.className = "benefit";
-
-  const check = document.createElement("span");
-  check.className = "check";
-  check.textContent = "✓";
-
-  item.append(check, document.createTextNode(text));
-  document.getElementById("benefits").appendChild(item);
-});
-
-const container = document.getElementById("fields");
-
-c.form.fields.forEach(field => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "field";
-
-  if (
-    field.type === "textarea" ||
-    field.name === "serviceAddress"
-  ) {
-    wrapper.classList.add("full");
+  if (!c || !c.branding || !c.content || !c.form) {
+    document.getElementById("message").textContent =
+      "Configuration could not be loaded. Please check config.js.";
+    console.error("businessConfig missing or incomplete.");
+    return;
   }
 
-  const label = document.createElement("label");
-  label.htmlFor = field.name;
-  label.textContent =
-    field.label + (field.required ? " *" : "");
+  document.title = c.businessName + " | Request Form";
 
-  let input;
+  const root = document.documentElement;
 
-  if (field.type === "select") {
-    input = document.createElement("select");
+  root.style.setProperty(
+    "--primary",
+    c.branding.primaryColor || "#075E54"
+  );
 
-    const first = document.createElement("option");
-    first.value = "";
-    first.textContent = field.placeholder || "Select an option";
-    input.appendChild(first);
+  root.style.setProperty(
+    "--background",
+    c.branding.backgroundColor || "#EDF3F0"
+  );
 
-    (field.options || []).forEach(value => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = value;
-      input.appendChild(option);
-    });
-  } else {
-    input = document.createElement(
-      field.type === "textarea" ? "textarea" : "input"
-    );
+  root.style.setProperty(
+    "--text",
+    c.branding.textColor || "#1B2D2A"
+  );
 
-    if (field.type !== "textarea") input.type = field.type;
-    if (field.placeholder) input.placeholder = field.placeholder;
-  }
+  root.style.setProperty(
+    "--form-background",
+    c.branding.formBackground || "#FFFFFF"
+  );
 
-  input.id = field.name;
-  input.name = field.name;
-  input.required = Boolean(field.required);
+  root.style.setProperty(
+    "--accent",
+    c.branding.accentColor || "#C7A96B"
+  );
 
-  wrapper.append(label, input);
-  container.appendChild(wrapper);
-});
+  root.style.setProperty(
+    "--radius",
+    c.branding.borderRadius || "18px"
+  );
 
-document.getElementById("businessForm").addEventListener(
-  "submit",
-  event => {
+  document.getElementById("businessName").textContent =
+    c.businessName || "Your Business";
+
+  document.getElementById("tagline").textContent =
+    c.tagline || "";
+
+  document.getElementById("heading").textContent =
+    c.content.heading || "";
+
+  document.getElementById("description").textContent =
+    c.content.description || "";
+
+  document.getElementById("formTitle").textContent =
+    c.form.title || "Request a Quote";
+
+  document.getElementById("callout").textContent =
+    c.content.calloutText || "";
+
+  const submitButton = document.getElementById("submitButton");
+
+  submitButton.textContent = c.content.buttonText || "Submit";
+
+  document.getElementById("logo").textContent =
+    c.branding.logoText ||
+    (c.businessName || "B")
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map(word => word[0])
+      .join("")
+      .toUpperCase();
+
+  const benefitsContainer = document.getElementById("benefits");
+
+  (c.content.benefits || []).forEach(text => {
+    const item = document.createElement("div");
+    item.className = "benefit";
+
+    const check = document.createElement("span");
+    check.className = "check";
+    check.textContent = "✓";
+
+    const description = document.createElement("span");
+    description.textContent = text;
+
+    item.append(check, description);
+    benefitsContainer.appendChild(item);
+  });
+
+  const container = document.getElementById("fields");
+
+  (c.form.fields || []).forEach(field => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "field";
+
+    if (
+      field.type === "textarea" ||
+      field.name === "serviceAddress"
+    ) {
+      wrapper.classList.add("full");
+    }
+
+    const label = document.createElement("label");
+    label.htmlFor = field.name;
+    label.textContent =
+      field.label + (field.required ? " *" : "");
+
+    let input;
+
+    if (field.type === "select") {
+      input = document.createElement("select");
+
+      const first = document.createElement("option");
+      first.value = "";
+      first.textContent = field.placeholder || "Select an option";
+      input.appendChild(first);
+
+      (field.options || []).forEach(value => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        input.appendChild(option);
+      });
+    } else if (field.type === "textarea") {
+      input = document.createElement("textarea");
+      input.placeholder = field.placeholder || "";
+    } else {
+      input = document.createElement("input");
+      input.type = field.type || "text";
+      input.placeholder = field.placeholder || "";
+    }
+
+    input.id = field.name;
+    input.name = field.name;
+    input.required = Boolean(field.required);
+
+    wrapper.append(label, input);
+    container.appendChild(wrapper);
+  });
+
+  const form = document.getElementById("businessForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", async event => {
     event.preventDefault();
 
+    if (!form.reportValidity()) return;
+
+    const webhookUrl = c.integration?.webhookUrl?.trim();
+
+    if (
+      !webhookUrl ||
+      !webhookUrl.startsWith("https://") ||
+      webhookUrl.includes("PASTE_YOUR")
+    ) {
+      message.textContent =
+        "Please configure a valid n8n Webhook URL.";
+      return;
+    }
+
     const data = Object.fromEntries(
-      new FormData(event.currentTarget).entries()
+      new FormData(form).entries()
     );
 
-    console.log("Form data preview:", data);
+    data.businessName = c.businessName || "";
+    data.submittedAt = new Date().toISOString();
 
-    document.getElementById("message").textContent =
-      "Form validated. n8n submission is not connected yet.";
-  }
-);
+    submitButton.disabled = true;
+    message.textContent = "Submitting your request...";
+
+    try {
+      /*
+       * FormData avoids the application/json preflight request.
+       * Do not manually set Content-Type; the browser sets the
+       * multipart boundary automatically.
+       */
+      const payload = new FormData();
+
+      Object.entries(data).forEach(([key, value]) => {
+        payload.append(key, value);
+      });
+
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        body: payload
+      });
+
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+
+      message.textContent =
+        "Your request was submitted successfully. Thank you!";
+
+      form.reset();
+
+    } catch (error) {
+      console.error("Webhook submission error:", error);
+
+      message.textContent =
+        "We couldn't confirm your submission. Please try again.";
+
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+})();
 </script>
 </body>
 </html>
