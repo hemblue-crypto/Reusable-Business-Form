@@ -5,34 +5,27 @@ const businessConfig = {
     webhookUrl: "https://hemagencynmn.app.n8n.cloud/webhook-test/40eba5d9-7a55-4f9f-b8dc-2e2d3a80b463"
   },
 
-  // Baaki existing configuration neeche waise hi rahegi
-};
-
-
   // Business Details
   businessName: "Sparkle Clean",
   tagline: "Professional Cleaning Services",
 
   // Branding
-  
-branding: {
-  primaryColor: "#075E54",
-  backgroundColor: "#EDF3F0",
-  formBackground: "#FFFFFF",
-  textColor: "#1B2D2A",
-  accentColor: "#C7A96B",
-  borderRadius: "18px",
-  logoText: "SC"
-},
+  branding: {
+    primaryColor: "#075E54",
+    backgroundColor: "#EDF3F0",
+    formBackground: "#FFFFFF",
+    textColor: "#1B2D2A",
+    accentColor: "#C7A96B",
+    borderRadius: "18px",
+    logoText: "SC"
+  },
 
-
-  // Form Heading and Promotional Content
+  // Heading and Promotional Content
   content: {
     heading: "A Cleaner Space Starts Here.",
     description:
       "Reliable and professional cleaning services for homes, offices and commercial spaces.",
 
-    // Four promotional benefit lines
     benefits: [
       "Professional Cleaning Team",
       "Flexible Scheduling",
