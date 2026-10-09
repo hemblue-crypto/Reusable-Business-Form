@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Request Form</title>
+
+<style>
+*{box-sizing:border-box}
+
+
+:root {
+  --primary: #10796F;
+  --background: #EDF3F0;
+  --text: #1B2D2A;
+  --accent: #C7A96B;
+  --radius: 18px;
+}
+
+body{
+  margin:0;
+  padding:14px;
+  font-family:Arial,sans-serif;
+  background:var(--background);
+  color:var(--text);
+}
+
+
+.page {
+  width: 100%;
+  max-width: 1020px;
+  min-height: 610px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.03fr 1fr;
+  background: var(--form-background, #FFFFFF);
+  border-radius: var(--radius, 18px);
+  overflow: hidden;
+  border: 1px solid #E0E9E4;
+  box-shadow: 0 18px 45px #173B3214;
+}
+
+.intro{
+  background:var(--primary);
+  color:#fff;
+  padding:42px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:28px;
+}
+
+.logo{
+  width:54px;
+  height:54px;
+  background:#fff;
+  color:var(--primary);
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  font-size:19px;
+}
+
+.brand-name{font-size:16px;font-weight:700}
+.tagline{font-size:13px;margin-top:6px}
+
+.intro h1{
+  font-size:38px;
+  line-height:1.12;
+  margin:0 0 18px;
+}
+
+.description{
+  font-size:14px;
+  line-height:1.65;
+  margin:0 0 22px;
+}
+
+.benefit{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  font-size:14px;
+  margin:0 0 13px;
+  line-height:1.4;
+}
+
+.check{font-size:18px;font-weight:bold}
+
+.callout{
+  margin-top:18px;
+  padding:14px 16px;
+  border-radius:11px;
+  background:#ffffff20;
+  font-size:13px;
+  line-height:1.5;
+}
+
+
+.form-panel {
+  background: var(--form-background, #FFFFFF);
+  padding: 40px;
+}
+
+.form-panel h2{
+  margin:0 0 7px;
+  font-size:27px;
+  color:#111;
+}
+
+.subtitle{
+  margin:0 0 24px;
+  font-size:12px;
+  color:#617083;
+}
+
+#fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:12px;
+  row-gap:0;
+}
+
+.field{margin-bottom:15px;min-width:0}
+.field.full{grid-column:1/-1}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:6px;
+  color:#17212c;
+}
+
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #DCE6E1;
+  border-radius: 12px;
+  background: #F8FBF9;
+  color: #1B2D2A;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease,
+              background 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px #10796F20;
+}
+
+input,select{height:40px}
+textarea{height:72px;resize:vertical}
+
+input:focus,select:focus,textarea:focus{
+  outline:2px solid var(--primary);
+  outline-offset:1px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#message{font-size:12px;line-height:1.5}
+
+@media(max-width:720px){
+  body{padding:10px}
+  .page{grid-template-columns:1fr}
+  .intro{padding:30px 25px}
+  .intro h1{font-size:32px}
+  .form-panel{padding:28px 22px}
+}
+
+@media(max-width:380px){
+  #fields{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <section class="intro">
+    <div class="brand">
+      <div class="logo" id="logo"></div>
+      <div>
+        <div class="brand-name" id="businessName"></div>
+        <div class="tagline" id="tagline"></div>
+      </div>
+    </div>
+
+    <h1 id="heading"></h1>
+    <p class="description" id="description"></p>
+    <div id="benefits"></div>
+    <div class="callout" id="callout"></div>
+  </section>
+
+  <section class="form-panel">
+    <h2 id="formTitle"></h2>
+    <p class="subtitle">Tell us what you need and we'll get back to you.</p>
+
+    <form id="businessForm">
+      <div id="fields"></div>
+      <button type="submit" id="submitButton"></button>
+      <p id="message" role="status"></p>
+    </form>
+  </section>
+
+</main>
+
+<script src="config.js"></script>
+
+<script>
+const c = businessConfig;
+
+document.title = c.businessName + " | Request Form";
+
+
+const root = document.documentElement;
+
+root.style.setProperty(
+  "--form-background",
+  c.branding.formBackground || "#FFFFFF"
+);
+
+
+root.style.setProperty(
+  "--primary",
+  c.branding.primaryColor || "#10796F"
+);
+
+root.style.setProperty(
+  "--background",
+  c.branding.backgroundColor || "#EDF3F0"
+);
+
+root.style.setProperty(
+  "--text",
+  c.branding.textColor || "#1B2D2A"
+);
+
+root.style.setProperty(
+  "--accent",
+  c.branding.accentColor || "#C7A96B"
+);
+
+root.style.setProperty(
+  "--radius",
+  c.branding.borderRadius || "18px"
+);
+
+document.getElementById("businessName").textContent = c.businessName;
+document.getElementById("tagline").textContent = c.tagline;
+document.getElementById("heading").textContent = c.content.heading;
+document.getElementById("description").textContent = c.content.description;
+document.getElementById("formTitle").textContent = c.form.title;
+document.getElementById("callout").textContent = c.content.calloutText;
+document.getElementById("submitButton").textContent = c.content.buttonText;
+
+const initials = c.businessName
+  .trim()
+  .split(/\s+/)
+  .slice(0, 2)
+  .map(word => word[0])
+  .join("")
+  .toUpperCase();
+
+document.getElementById("logo").textContent = initials;
+
+c.content.benefits.forEach(text => {
+  const item = document.createElement("div");
+  item.className = "benefit";
+
+  const check = document.createElement("span");
+  check.className = "check";
+  check.textContent = "✓";
+
+  item.append(check, document.createTextNode(text));
+  document.getElementById("benefits").appendChild(item);
+});
+
+const container = document.getElementById("fields");
+
+c.form.fields.forEach(field => {
+  const wrapper = document.createElement("div");
+  wrapper.className = "field";
+
+  if (
+    field.type === "textarea" ||
+    field.name === "serviceAddress"
+  ) {
+    wrapper.classList.add("full");
+  }
+
+  const label = document.createElement("label");
+  label.htmlFor = field.name;
+  label.textContent =
+    field.label + (field.required ? " *" : "");
+
+  let input;
+
+  if (field.type === "select") {
+    input = document.createElement("select");
+
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = field.placeholder || "Select an option";
+    input.appendChild(first);
+
+    (field.options || []).forEach(value => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      input.appendChild(option);
+    });
+  } else {
+    input = document.createElement(
+      field.type === "textarea" ? "textarea" : "input"
+    );
+
+    if (field.type !== "textarea") input.type = field.type;
+    if (field.placeholder) input.placeholder = field.placeholder;
+  }
+
+  input.id = field.name;
+  input.name = field.name;
+  input.required = Boolean(field.required);
+
+  wrapper.append(label, input);
+  container.appendChild(wrapper);
+});
+
+document.getElementById("businessForm").addEventListener(
+  "submit",
+  event => {
+    event.preventDefault();
+
+    const data = Object.fromEntries(
+      new FormData(event.currentTarget).entries()
+    );
+
+    console.log("Form data preview:", data);
+
+    document.getElementById("message").textContent =
+      "Form validated. n8n submission is not connected yet.";
+  }
+);
+</script>
+</body>
+</html>
