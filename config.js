@@ -1,5 +1,14 @@
 
 const businessConfig = {
+  // n8n Webhook Configuration
+  integration: {
+    webhookUrl: "https://hemagencynmn.app.n8n.cloud/webhook-test/40eba5d9-7a55-4f9f-b8dc-2e2d3a80b463"
+  },
+
+  // Baaki existing configuration neeche waise hi rahegi
+};
+
+
   // Business Details
   businessName: "Sparkle Clean",
   tagline: "Professional Cleaning Services",
